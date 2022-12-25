@@ -85,38 +85,46 @@ if __name__ == "__main__":
 
     # Run a macro on the last controller
     # and don't wait for the macro to complete
-    print("Macro Started")
-    macro_id = nx.macro(controller_idx, MACRO, block=False)
-    time.sleep(3)
-    # Stop the macro
-    print("Stopping Macro")
-    nx.stop_macro(controller_idx, macro_id)
-    print("Stopped Macro")
+    # print("Macro Started")
+    # macro_id = nx.macro(controller_idx, MACRO, block=False)
+    # time.sleep(3)
+    # # Stop the macro
+    # print("Stopping Macro")
+    # nx.stop_macro(controller_idx, macro_id)
+    # print("Stopped Macro")
 
-    # Moving the selected home screen item two spaces to the right and back.
-    nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, 100, 0,
-                  tilted=0.25, released=0.25)
-    nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, 100, 0,
-                  tilted=0.25, released=0.25)
-    nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, -100, 0,
-                  tilted=0.25, released=0.25)
-    nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, -100, 0,
-                  tilted=0.25, released=0.25)
+    # # Moving the selected home screen item two spaces to the right and back.
+    # nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, 100, 0,
+    #               tilted=0.25, released=0.25)
+    # nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, 100, 0,
+    #               tilted=0.25, released=0.25)
+    # nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, -100, 0,
+    #               tilted=0.25, released=0.25)
+    # nx.tilt_stick(controller_idx, Sticks.RIGHT_STICK, -100, 0,
+    #               tilted=0.25, released=0.25)
 
     # Return to the "Change Grip/Order Screen"
-    nx.press_buttons(controller_idx, [Buttons.A])
-    time.sleep(2)
-    nx.press_buttons(controller_idx, [Buttons.A])
-    time.sleep(2)
 
-    # Enter the same macro, but block this time
-    print("Macro Started")
-    macro_id = nx.macro(controller_idx, MACRO)
-    print("Macro finished, going to the home screen...")
+    # read from terminal input to start
+    cmd = input("input A to start")
+    if cmd == "A":
+        print("start press A")
 
-    nx.press_buttons(controller_idx, [Buttons.B])
-    time.sleep(2)
-    nx.press_buttons(controller_idx, [Buttons.B])
-    time.sleep(2)
+        while True:
+            nx.press_buttons(controller_idx, [Buttons.A])
+            time.sleep(0.5)
+    # nx.press_buttons(controller_idx, [Buttons.A])
+    # time.sleep(2)
+    
+
+    # # Enter the same macro, but block this time
+    # print("Macro Started")
+    # macro_id = nx.macro(controller_idx, MACRO)
+    # print("Macro finished, going to the home screen...")
+
+    # nx.press_buttons(controller_idx, [Buttons.B])
+    # time.sleep(2)
+    # nx.press_buttons(controller_idx, [Buttons.B])
+    # time.sleep(2)
 
     print("Exiting...")
